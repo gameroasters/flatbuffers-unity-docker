@@ -1,0 +1,44 @@
+name: CD
+on: 
+  push:
+    tags:
+     - '*'
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Get tag version
+      id: get_version
+      run: echo ::set-output name=version::${GITHUB_REF/refs\/tags\//}
+
+    # - name: Login to Docker Hub
+    #   run: |
+    #     docker login \
+    #     -u ${{ secrets.DOCKER_USERNAME }} \
+    #     -p ${{ secrets.DOCKER_PASSWORD }}
+
+    - name: Build Docker image
+      run: docker build -t ${CONTAINER}:${{ steps.get_version.outputs.version }} --build-arg FLATBUFFER_TAG=${{ steps.get_version.outputs.version }} -f Dockerfile .
+
+    - name: Extract .net DLL
+      run: make extract-dll
+
+    - uses: actions/upload-artifact@v1
+      with:
+        name: FlatBuffers.dll
+        path: ./FlatBuffers.dll
+
+    # - name: Publish Docker image
+    #   run: docker push gameroasters/flatbuffers-unity:${{ steps.get_version.outputs.version }}
+
+    - name: Release
+      uses: softprops/action-gh-release@v1
+      with:
+        prerelease: ${{ contains(github.ref, '-') }}
+        files: |
+          ./FlatBuffers.dll
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

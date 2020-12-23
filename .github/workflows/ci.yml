@@ -1,4 +1,4 @@
-name: Publish Docker
+name: CI
 on: 
   schedule:
     - cron: '0 1 * * *' # run at 2 AM UTC
@@ -25,7 +25,7 @@ jobs:
 
     - uses: actions/upload-artifact@v1
       with:
-        name: dotnet DLLs
+        name: FlatBuffers.dll
         path: ./FlatBuffers.dll
 
     - name: Publish Docker image
