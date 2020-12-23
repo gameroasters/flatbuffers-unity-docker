@@ -1,5 +1,5 @@
 FROM mono
-ARG FLATBUFFER_TAG=master
+ARG FLATBUFFER_TAG=v1.12.0
 LABEL maintainer="extrawurst"
 ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update && apt-get install -y g++ git cmake make
