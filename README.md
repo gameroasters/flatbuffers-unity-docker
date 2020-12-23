@@ -2,10 +2,10 @@
 
 convenient cross platform way to use flatbuffers for unity:
 
-1. creates flatbuffers .net (mono) DLL compatible with unity 
-2. dockerized flatc binary for easy integration into CI pipelines
+1. build flatbuffers .net DLL compatible with Unity 
+2. easy flatc schema code generation using docker container
 
-based on [mono docker](https://github.com/mono/docker)
+based on [mono docker image](https://github.com/mono/docker)
 
 **note:** currently only supports flatbuffers v1.12.0
 
