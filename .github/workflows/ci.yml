@@ -1,0 +1,15 @@
+name: Publish Docker
+on: 
+  schedule:
+    - cron: '0 1 * * *' # run at 2 AM UTC
+  push:
+    branches: [ '*' ]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Build Docker image
+      run: docker build -t gameroasters/flatbuffers-unity:latest --build-arg FLATBUFFER_TAG=master -f Dockerfile .
