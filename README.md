@@ -12,7 +12,7 @@ based on [mono docker image](https://github.com/mono/docker)
 # Usage
 
 1. create your schema fbs (`schema.fbs`)
-2. use flatc to generate your code (flatc bin in container)
+2. use flatc to generate your code (flatc bin in [docker container](https://hub.docker.com/repository/docker/gameroasters/flatbuffers-unity))
 3. grab .net DLL for unity from [releases](https://github.com/gameroasters/flatbuffers-unity-docker/releases)
 4. done
 
