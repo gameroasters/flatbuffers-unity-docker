@@ -10,3 +10,9 @@ based on [mono docker](https://github.com/mono/docker)
 # Usage
 
 TODO
+
+# Todo
+
+* tagged versions
+* update to flatbuffers master: 
+* use dotnet instead of mono https://github.com/google/flatbuffers/commit/0bdf2fa156f5133b09ddac7beb326b942d524b38
