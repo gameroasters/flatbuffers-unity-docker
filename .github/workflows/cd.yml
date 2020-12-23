@@ -21,7 +21,7 @@ jobs:
     #     -p ${{ secrets.DOCKER_PASSWORD }}
 
     - name: Build Docker image
-      run: docker build -t ${CONTAINER}:${{ steps.get_version.outputs.version }} --build-arg FLATBUFFER_TAG=${{ steps.get_version.outputs.version }} -f Dockerfile .
+      run: docker build -t gameroasters/flatbuffers-unity:${{ steps.get_version.outputs.version }} --build-arg FLATBUFFER_TAG=${{ steps.get_version.outputs.version }} -f Dockerfile .
 
     - name: Extract .net DLL
       run: make extract-dll
