@@ -5,5 +5,5 @@ docker-build:
 
 extract-dll:
 	docker run -v $(shell pwd):/dotnet ${CONTAINER}:latest /bin/bash -c "\
-	cp /flatbuffers/net/FlatBuffers/bin/Release/FlatBuffers.dll /dotnet && \
-	cp /flatbuffers/net/FlatBuffers/bin/Debug/FlatBuffers.dll /dotnet/Flatbuffers.Debug.dll"
+	cp /flatbuffers/Release/FlatBuffers.dll /dotnet && \
+	cp /flatbuffers/Debug/FlatBuffers.dll /dotnet/Flatbuffers.Debug.dll"
