@@ -18,11 +18,7 @@ Uses [latest master commit](https://github.com/google/flatbuffers) of flatbuffer
 
 ## example for using flatc
 
-use:
-
-`make schema-build`
-
-_or_
+Use:
 
 ```sh
 docker run -it -v $(pwd):/fb gameroasters/flatbuffers-unity:latest /bin/bash -c "cd /fb && \
