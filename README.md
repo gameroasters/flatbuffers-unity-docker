@@ -32,8 +32,3 @@ docker run -it -v $(shell pwd):/fb gameroasters/flatbuffers-unity:latest /bin/ba
 ```
 
 this will generate a `schema.cs` and `schema.rs` with your `schema.fbs` schema type serialiation in rust and csharp.
-
-# Todo
-
-- [] support flatbuffers master version
-- [] use dotnet instead of mono https://github.com/google/flatbuffers/commit/0bdf2fa156f5133b09ddac7beb326b942d524b38
