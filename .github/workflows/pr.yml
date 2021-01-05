@@ -1,0 +1,21 @@
+name: PR
+on: 
+  pull_request:
+    branches: [ main ]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Build Docker image
+      run: make docker-build
+
+    - name: Extract .net DLL
+      run: make extract-dll
+
+    - uses: actions/upload-artifact@v1
+      with:
+        name: FlatBuffers.dll
+        path: ./FlatBuffers.dll
