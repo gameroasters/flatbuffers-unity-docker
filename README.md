@@ -25,7 +25,7 @@ use:
 _or_
 
 ```sh
-docker run -it -v $(shell pwd):/fb gameroasters/flatbuffers-unity:latest /bin/bash -c "cd /fb && \
+docker run -it -v $(pwd):/fb gameroasters/flatbuffers-unity:latest /bin/bash -c "cd /fb && \
 	flatc -n --gen-onefile schema.fbs && \
 	flatc -r --gen-onefile schema.fbs"
 	mv schema_generated.rs schema.rs
@@ -42,9 +42,9 @@ use:
 _or_
 
 ```sh
-docker run -v $(shell pwd):/dotnet gameroasters/flatbuffers-unity:latest:latest /bin/bash -c "\
+docker run -v $(pwd):/dotnet gameroasters/flatbuffers-unity:latest /bin/bash -c "\
 	cp /flatbuffers/net/FlatBuffers/bin/Release/FlatBuffers.dll /dotnet && \
 	cp /flatbuffers/net/FlatBuffers/bin/Debug/FlatBuffers.dll /dotnet/Flatbuffers.Debug.dll"
 ```
 
-this extracts the `Flatbuffers.dll` into the current directory
+this extracts the `Flatbuffers.dll`
