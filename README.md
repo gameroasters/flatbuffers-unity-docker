@@ -5,7 +5,7 @@ convenient cross platform way to use flatbuffers for unity:
 1. build flatbuffers .net DLL compatible with Unity
 2. easy flatc schema code generation using docker container
 
-based on [donet docker image](https://hub.docker.com/_/microsoft-dotnet-sdk/)
+based on [dotnet docker image](https://hub.docker.com/_/microsoft-dotnet-sdk/)
 
 Uses [latest master commit](https://github.com/google/flatbuffers) of flatbuffers
 
