@@ -5,9 +5,9 @@ convenient cross platform way to use flatbuffers for unity:
 1. build flatbuffers .net DLL compatible with Unity
 2. easy flatc schema code generation using docker container
 
-based on [mono docker image](https://github.com/mono/docker)
+based on [donet docker image](https://hub.docker.com/_/microsoft-dotnet-sdk/)
 
-**note:** currently only supports flatbuffers v1.12.0
+Uses [latest master commit](https://github.com/google/flatbuffers) of flatbuffers
 
 # Usage
 
@@ -32,3 +32,19 @@ docker run -it -v $(shell pwd):/fb gameroasters/flatbuffers-unity:latest /bin/ba
 ```
 
 this will generate a `schema.cs` and `schema.rs` with your `schema.fbs` schema type serialiation in rust and csharp.
+
+## extract .dll for unity
+
+use:
+
+`make extract-dll`
+
+_or_
+
+```sh
+docker run -v $(shell pwd):/dotnet gameroasters/flatbuffers-unity:latest:latest /bin/bash -c "\
+	cp /flatbuffers/net/FlatBuffers/bin/Release/FlatBuffers.dll /dotnet && \
+	cp /flatbuffers/net/FlatBuffers/bin/Debug/FlatBuffers.dll /dotnet/Flatbuffers.Debug.dll"
+```
+
+this extracts the `Flatbuffers.dll` into the current directory
