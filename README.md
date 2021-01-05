@@ -2,12 +2,12 @@
 
 convenient cross platform way to use flatbuffers for unity:
 
-1. build flatbuffers .net DLL compatible with Unity 
+1. build flatbuffers .net DLL compatible with Unity
 2. easy flatc schema code generation using docker container
 
-based on [mono docker image](https://github.com/mono/docker)
+based on [dotnet docker image](https://hub.docker.com/_/microsoft-dotnet-sdk/)
 
-**note:** currently only supports flatbuffers v1.12.0
+Uses [latest master commit](https://github.com/google/flatbuffers) of flatbuffers
 
 # Usage
 
@@ -18,15 +18,29 @@ based on [mono docker image](https://github.com/mono/docker)
 
 ## example for using flatc
 
+Use:
+
 ```sh
-docker run -it -v $(shell pwd):/fb gameroasters/flatbuffers-unity:latest /bin/bash -c "cd /fb && \
+docker run -it -v $(pwd):/fb gameroasters/flatbuffers-unity:latest /bin/bash -c "cd /fb && \
 	flatc -n --gen-onefile schema.fbs && \
 	flatc -r --gen-onefile schema.fbs"
+	mv schema_generated.rs schema.rs
 ```
 
-this will generate a `schema.cs` and `schema.rs` with your schema type serialiation in rust and csharp.
+this will generate a `schema.cs` and `schema.rs` with your `schema.fbs` schema type serialiation in rust and csharp.
 
-# Todo
+## extract .dll for unity
 
-- [] support flatbuffers master version
-- [] use dotnet instead of mono https://github.com/google/flatbuffers/commit/0bdf2fa156f5133b09ddac7beb326b942d524b38
+use:
+
+`make extract-dll`
+
+_or_
+
+```sh
+docker run -v $(pwd):/dotnet gameroasters/flatbuffers-unity:latest /bin/bash -c "\
+	cp /flatbuffers/net/FlatBuffers/bin/Release/FlatBuffers.dll /dotnet && \
+	cp /flatbuffers/net/FlatBuffers/bin/Debug/FlatBuffers.dll /dotnet/Flatbuffers.Debug.dll"
+```
+
+this extracts the `Flatbuffers.dll`
