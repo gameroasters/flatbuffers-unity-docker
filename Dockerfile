@@ -1,8 +1,10 @@
-FROM mcr.microsoft.com/dotnet/sdk:5.0
+FROM mcr.microsoft.com/dotnet/sdk:5.0-focal
 ARG FLATBUFFER_TAG=v1.12.0
 LABEL maintainer="extrawurst"
 ENV DEBIAN_FRONTEND=noninteractive
-RUN apt-get update && apt-get install -y g++ git cmake make
+RUN apt-get update && \
+    apt-get install -y \
+        g++ git cmake make
 RUN echo "repo tag: $FLATBUFFER_TAG"
 RUN git clone --branch ${FLATBUFFER_TAG} --depth 1 https://github.com/google/flatbuffers.git
 # build flatc bin
