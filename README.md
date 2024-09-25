@@ -12,7 +12,7 @@ Uses [latest master commit](https://github.com/google/flatbuffers) of flatbuffer
 # Usage
 
 1. create your schema fbs (`schema.fbs`)
-2. use flatc to generate your code (flatc bin in [docker container](https://hub.docker.com/repository/docker/gameroasters/flatbuffers-unity))
+2. use flatc to generate your code (flatc bin in docker image)
 3. grab .net DLL for unity from [releases](https://github.com/gameroasters/flatbuffers-unity-docker/releases)
 4. done
 
